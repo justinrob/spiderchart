@@ -50,11 +50,14 @@ function makeSpiderChartSettings(categories, data, color ) {
 
 function change(e){
    e.preventDefault();
-   var visDes = document.getElementById('vDes').valueAsNumber;
-   var prodMan = document.getElementById('pMan').valueAsNumber;   
-   var intDes = document.getElementById('iDes').valueAsNumber;   
-   var labels = ['Visual designer', 'Product manager', 'Interaction designer']
-    var values = [visDes, prodMan, intDes]
+   var val1 = document.getElementById('value1').valueAsNumber;
+   var val2 = document.getElementById('value2').valueAsNumber;   
+   var val3 = document.getElementById('value3').valueAsNumber; 
+   var lab1 = document.getElementById('label1').value;
+   var lab2 = document.getElementById('label2').value;   
+   var lab3 = document.getElementById('label3').value;   
+    var labels = [lab1, lab2, lab3]
+    var values = [val1, val2, val3]
     var hue = 'green'
     var settings = makeSpiderChartSettings(labels, values, hue )    
     $('#container').highcharts(settings);
