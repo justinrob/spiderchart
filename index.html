@@ -2,82 +2,38 @@
 <html>
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="http://code.highcharts.com/highcharts-more.js"></script>
-    <script src="http://code.highcharts.com/modules/exporting.js"></script>
-    <script src="spider.js"></script>
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="spider.js"></script>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
 
-
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-    mdl-layout--overlay-drawer-button">
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Add details</span>
-        <form>
-
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="label1">
-                <label class="mdl-textfield__label">Label...</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="number" id="value1" pattern="0-9]" value="20"><br>
-                <label class="mdl-textfield__label">Number...</label>
-                <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="label2">
-                <label class="mdl-textfield__label">Label...</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="number" id="value2" pattern="0-9]" value="20"><br>
-                <label class="mdl-textfield__label">Number...</label>
-                <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="label3">
-                <label class="mdl-textfield__label">Label...</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="number" id="value3" pattern="0-9]" value="20"><br>
-                <label class="mdl-textfield__label">Number...</label>
-                <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="label4">
-                <label class="mdl-textfield__label">Label...</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="number" id="value4" pattern="0-9]" value="20"><br>
-                <label class="mdl-textfield__label">Number...</label>
-                <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="label5">
-                <label class="mdl-textfield__label">Label...</label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="number" id="value5" pattern="0-9]" value="20"><br>
-                <label class="mdl-textfield__label">Number...</label>
-                <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
+    <h1>Spider Chart</h1>
 
 
-            <input type="submit" id="byBtn" value="Change" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"/>
-        </form>
-    </div>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <h1>Spider Chart</h1>
+
+    <div class="demo-grid-ruler mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col">
+
+            <form>
+                <input type="text" id="label1">
+                <input type="number" id="value1" value="20"><br>
+                <input type="text" id="label2">
+                <input type="number" id="value2" value="20"><br>
+                <input type="text" id="label3">
+                <input type="number" id="value3" value="20"><br>
+                <input type="submit" id="byBtn" value="Change"/>
+            </form>
+        </div>
+
+        <div class="mdl-cell mdl-cell--6-col">
             <div id="container" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
         </div>
-    </main>
-</div>
-
-
+    </div>
 
 
 </body>
