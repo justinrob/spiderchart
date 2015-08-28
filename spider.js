@@ -1,4 +1,4 @@
-function makeSpiderChartSettings(categories, data, color, title ) {
+function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
     return {
         chart: {
             polar: true,
@@ -8,6 +8,10 @@ function makeSpiderChartSettings(categories, data, color, title ) {
         title: {
             text: title,
             x: -80
+        },
+
+        subtitle: {
+        text: subtitle,
         },
 
         pane: {
@@ -48,8 +52,8 @@ function makeSpiderChartSettings(categories, data, color, title ) {
     }
 }
 
-function change(e){
-   e.preventDefault();
+function updateChart(event){
+   //event.preventDefault();
    
    var val1 = document.getElementById('value1').valueAsNumber;
    var val2 = document.getElementById('value2').valueAsNumber;   
@@ -61,17 +65,32 @@ function change(e){
    var lab3 = document.getElementById('label3').value;
     var labels = [lab1, lab2, lab3];
 
-   var heading = document.getElementById('title').value;    
+   var heading = document.getElementById('title').value;  
+
+   var subheading = document.getElementById('subtitle').value;   
 
     var hue = 'green';
 
-    var settings = makeSpiderChartSettings(labels, values, hue, heading)    
+    var settings = makeSpiderChartSettings(labels, values, hue, heading, subheading)    
     $('#container').highcharts(settings);
-    return false;
+    
+    //return false;
 }
     
 
-
+//This function will run when the page loads
 $(function () {
-    $('#byBtn').click(change);
+    //find the element with id byBtn and when it's clicked, run our updateChart function above
+   //$('#byBtn').click(updateChart);
+
+    //watch changes on the #title element 
+    $('#title').keyup(updateChart);
+    $('#subtitle').keyup(updateChart);
+    $('#label1').keyup(updateChart);
+    $('#label2').keyup(updateChart);
+    $('#label3').keyup(updateChart);
+    $('#value1').keyup(updateChart);
+    $('#value2').keyup(updateChart);
+    $('#value3').keyup(updateChart);
+
 });
