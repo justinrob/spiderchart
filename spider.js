@@ -11,11 +11,11 @@ function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
         },
 
         subtitle: {
-        text: subtitle,
+            text: subtitle,
         },
 
         pane: {
-            size: '80%'
+            size: '100%'
         },
 
         xAxis: {
@@ -63,20 +63,20 @@ function updateChart(event){
    var lab1 = document.getElementById('label1').value;
    var lab2 = document.getElementById('label2').value;   
    var lab3 = document.getElementById('label3').value;
-    var labels = [lab1, lab2, lab3];
+   var labels = [lab1, lab2, lab3];
 
    var heading = document.getElementById('title').value;  
 
    var subheading = document.getElementById('subtitle').value;   
 
-    var hue = 'green';
+   var hue = 'green';
 
-    var settings = makeSpiderChartSettings(labels, values, hue, heading, subheading)    
-    $('#container').highcharts(settings);
-    
+   var settings = makeSpiderChartSettings(labels, values, hue, heading, subheading)    
+   $('#container').highcharts(settings);
+
     //return false;
 }
-    
+
 
 //This function will run when the page loads
 $(function () {
@@ -84,13 +84,30 @@ $(function () {
    //$('#byBtn').click(updateChart);
 
     //watch changes on the #title element 
-    $('#title').keyup(updateChart);
-    $('#subtitle').keyup(updateChart);
-    $('#label1').keyup(updateChart);
-    $('#label2').keyup(updateChart);
-    $('#label3').keyup(updateChart);
-    $('#value1').keyup(updateChart);
-    $('#value2').keyup(updateChart);
-    $('#value3').keyup(updateChart);
+    //TODO: try to clean this up into a function
+    //1. Make a function that takes in a list of IDs (strings) 
+    //2. Make that function body do this:
+    //    for every string in the list, run a line like:
+    //    $(string_item).keyup(updateChart);
+    //  NOTE: in order to do #2, you need to learn how to write a 'for loop' that will iterate
+    //       over each element in an array somehow
+    //3. Replace all of the lines below with one line that calls your function 
+    //   and passes in the list of all of these IDs
+
+    function watchElements(IDs) {
+        var i;
+        for (i = 0; i < IDs.length; i++) {
+            var id = "#" + IDs[i]; //get the string from the list IDs at position i
+            var theElement = $(id); // use jquery to find the element with this id
+            theElement.keyup(updateChart); //attach a keyup event handler that calls updateChart
+        }
+    }
+    
+    var myIDs = ["title", "subtitle", "label1", "label2", "label3", "value1", "value2", "value3"];
+        
+    watchElements(myIDs);        
+
+
+
 
 });

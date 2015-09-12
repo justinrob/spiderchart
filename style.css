@@ -1,6 +1,26 @@
-.container {
-  display: flex; /* or inline-flex */
+.row {
+	height:100vh;
 }
-.item {
-  flex: 1; /* default 0 */
+.columns {
+	height:100vh;
+	padding: 2em;
+	margin: 0;
+}
+.edit {
+	background: #EEEEEC;
+}
+.display {
+	background: #fff;
+}
+.chartbox {
+	margin-top: 2em;
+}
+.charttitle {
+	color: red;
+}
+h1 {
+	font-weight: 900;
+}
+p {
+	font-weight: 100;
 }
