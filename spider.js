@@ -1,13 +1,20 @@
-function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
+function makeSpiderChartSettings(categories, data, color, title, subtitle ) {  
+    
     return {
         chart: {
             polar: true,
-            type: 'line'
+            renderTo: 'container',
+            type: 'line',
+            marginTop: 110,
         },
 
         title: {
             text: title,
-            x: -80
+            style: {
+                color: '#424242',
+                fontWeight: 'normal',
+                fontSize: '2em',
+            }
         },
 
         subtitle: {
@@ -15,7 +22,8 @@ function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
         },
 
         pane: {
-            size: '100%'
+            size: '100%',
+            y: 10,
         },
 
         xAxis: {
@@ -32,15 +40,17 @@ function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
 
         tooltip: {
             shared: true,
+            enabled: false,
             pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
         },
 
         legend: {
-            align: 'right',
-            verticalAlign: 'top',
-            y: 70,
-            layout: 'vertical'
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'horizontal'
         },
+
+
 
         series: [{
             name: 'The Chart',
@@ -57,19 +67,21 @@ function updateChart(event){
    
    var val1 = document.getElementById('value1').valueAsNumber;
    var val2 = document.getElementById('value2').valueAsNumber;   
-   var val3 = document.getElementById('value3').valueAsNumber; 
-   var values = [val1, val2, val3];
+   var val3 = document.getElementById('value3').valueAsNumber;
+   var val4 = document.getElementById('value4').valueAsNumber; 
+   var values = [val1, val2, val3, val4];
    
    var lab1 = document.getElementById('label1').value;
    var lab2 = document.getElementById('label2').value;   
    var lab3 = document.getElementById('label3').value;
-   var labels = [lab1, lab2, lab3];
+   var lab4 = document.getElementById('label4').value;
+   var labels = [lab1, lab2, lab3, lab4];
 
    var heading = document.getElementById('title').value;  
 
    var subheading = document.getElementById('subtitle').value;   
 
-   var hue = 'green';
+   var hue = '#EA4771';
 
    var settings = makeSpiderChartSettings(labels, values, hue, heading, subheading)    
    $('#container').highcharts(settings);
@@ -103,9 +115,10 @@ $(function () {
         }
     }
     
-    var myIDs = ["title", "subtitle", "label1", "label2", "label3", "value1", "value2", "value3"];
+    var myIDs = ["title", "subtitle", "label1", "label2", "label3", "label4", "value1", "value2", "value3"];
         
     watchElements(myIDs);        
+    updateChart();
 
 
 
