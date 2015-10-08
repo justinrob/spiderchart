@@ -89,6 +89,20 @@ function updateChart(event){
     //return false;
 }
 
+    function watchElements(IDs) {
+        var i;
+        for (i = 0; i < IDs.length; i++) {
+            var id = "#" + IDs[i]; //get the string from the list IDs at position i
+            var theElement = $(id); // use jquery to find the element with this id
+            theElement.keyup(updateChart); //attach a keyup event handler that calls updateChart
+        }
+    }
+
+    function addAxis() {
+        var axisLine='<input type="text" placeholder="Axis 4"> '
+        axisLine += '<input type="number" value="20"><br>';
+        $('#addAxis').before(axisLine);
+    }
 
 //This function will run when the page loads
 $(function () {
@@ -106,21 +120,10 @@ $(function () {
     //3. Replace all of the lines below with one line that calls your function 
     //   and passes in the list of all of these IDs
 
-    function watchElements(IDs) {
-        var i;
-        for (i = 0; i < IDs.length; i++) {
-            var id = "#" + IDs[i]; //get the string from the list IDs at position i
-            var theElement = $(id); // use jquery to find the element with this id
-            theElement.keyup(updateChart); //attach a keyup event handler that calls updateChart
-        }
-    }
-    
     var myIDs = ["title", "subtitle", "label1", "label2", "label3", "label4", "value1", "value2", "value3"];
         
     watchElements(myIDs);        
     updateChart();
 
-
-
-
+    $('#addAxis').click(addAxis);
 });
