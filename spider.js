@@ -62,21 +62,34 @@ function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
     }
 }
 
+function getValueAsNumberFromInput(index, input) {
+    return input.valueAsNumber;
+}
+
+
+function getValues(){
+    var valueInputs = $("input.value-input");  
+    var values = valueInputs.map(getValueAsNumberFromInput).get(); 
+    return values;
+};
+
 function updateChart(event){
    //event.preventDefault();
    
-   var val1 = document.getElementById('value1').valueAsNumber;
-   var val2 = document.getElementById('value2').valueAsNumber;   
-   var val3 = document.getElementById('value3').valueAsNumber;
-   var val4 = document.getElementById('value4').valueAsNumber; 
-   var values = [val1, val2, val3, val4];
+   // var val1 = document.getElementById('value1').valueAsNumber;
+   // var val2 = document.getElementById('value2').valueAsNumber;   
+   // var val3 = document.getElementById('value3').valueAsNumber;
+   // var val4 = document.getElementById('value4').valueAsNumber; 
+   // var values = [val1, val2, val3, val4];
    
-   var lab1 = document.getElementById('label1').value;
-   var lab2 = document.getElementById('label2').value;   
-   var lab3 = document.getElementById('label3').value;
-   var lab4 = document.getElementById('label4').value;
-   var labels = [lab1, lab2, lab3, lab4];
+   // var lab1 = document.getElementById('label1').value;
+   // var lab2 = document.getElementById('label2').value;   
+   // var lab3 = document.getElementById('label3').value;
+   // var lab4 = document.getElementById('label4').value;
+   // var labels = [lab1, lab2, lab3, lab4];
 
+   var values = getValues();
+   var labels = ['a', 'b', 'c', 'd', 'e']; // <--- TODO: replace this hardcoded list with the result of a function call that gets the values from the label inputs
    var heading = document.getElementById('title').value;  
 
    var subheading = document.getElementById('subtitle').value;   
@@ -99,9 +112,8 @@ function updateChart(event){
     }
 
     function addAxis() {
-        var axisLine='<input type="text" placeholder="Axis 4"> '
-        axisLine += '<input type="number" value="20"><br>';
-        $('#addAxis').before(axisLine);
+        var axisLineHtml = $('#axisLineTemplate').html();
+        $('#addAxis').before(axisLineHtml);
     }
 
 //This function will run when the page loads
@@ -122,7 +134,7 @@ $(function () {
 
     var myIDs = ["title", "subtitle", "label1", "label2", "label3", "label4", "value1", "value2", "value3"];
         
-    watchElements(myIDs);        
+    watchElements(myIDs);    // <--- TODO With Gabe next time: wtch elements by id or class   
     updateChart();
 
     $('#addAxis').click(addAxis);
