@@ -49,8 +49,8 @@
                 <h1>Spider Chart</h1>
                 <p>Start typing into the fields and watch the magical spider chart appear before your eyes.</p>
 
-                <input type="text" id="title" placeholder="Title" value="Spider Chart">
-                <input type="text" id="subtitle" placeholder="Subtitle" value="does whatever a spider chart does"><br>
+                <input type="text" id="title" class="heading" placeholder="Title" value="Spider Chart">
+                <input type="text" id="subtitle" class="heading" placeholder="Subtitle" value="does whatever a spider chart does"><br>
                 
                 <ul id='axisLines'>
                   <li>
@@ -59,17 +59,17 @@
                   </li>
 
                   <li>
-                    <input class="label-input" type="text" placeholder="Axis 1">
+                    <input class="label-input" type="text" placeholder="Axis 2">
                     <input class="value-input" type="number" value="20"><br>
                   </li>
                   
                   <li>
-                    <input class="label-input" type="text" placeholder="Axis 1">
+                    <input class="label-input" type="text" placeholder="Axis 3">
                     <input class="value-input" type="number" value="20"><br>
                   </li>
                   
                   <li>
-                    <input class="label-input" type="text" placeholder="Axis 1">
+                    <input class="label-input" type="text" placeholder="Axis 4">
                     <input class="value-input" type="number" value="20"><br>
                   </li>
                 </ul>
@@ -87,8 +87,8 @@
 
 <script type='text/js-template' id='axisLineTemplate'>
   <li>
-    <input class="label-input"  type="text" placeholder="Axis 4">
-    <input class="value-input"  type="number" value="20"><br>
+    <input id="label-input"  type="text" placeholder="Axis 4">
+    <input id="value-input"  type="number" value="20"><br>
   </li>
 </script>
 

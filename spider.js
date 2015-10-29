@@ -65,12 +65,21 @@ function makeSpiderChartSettings(categories, data, color, title, subtitle ) {
 function getValueAsNumberFromInput(index, input) {
     return input.valueAsNumber;
 }
+function getValueFromInput(index, input) {
+    return input.value;
+}
 
 
 function getValues(){
     var valueInputs = $("input.value-input");  
     var values = valueInputs.map(getValueAsNumberFromInput).get(); 
     return values;
+};
+
+function getLabels(){
+    var labelInputs = $("input.label-input");
+    var labels = labelInputs.map(getValueFromInput).get(); 
+    return labels;
 };
 
 function updateChart(event){
@@ -82,16 +91,15 @@ function updateChart(event){
    // var val4 = document.getElementById('value4').valueAsNumber; 
    // var values = [val1, val2, val3, val4];
    
-   // var lab1 = document.getElementById('label1').value;
+    // var lab1 = document.getElementById('label1').value;
    // var lab2 = document.getElementById('label2').value;   
    // var lab3 = document.getElementById('label3').value;
    // var lab4 = document.getElementById('label4').value;
-   // var labels = [lab1, lab2, lab3, lab4];
+    // var labels = [lab1, lab2, lab3, lab4];
 
    var values = getValues();
-   var labels = ['a', 'b', 'c', 'd', 'e']; // <--- TODO: replace this hardcoded list with the result of a function call that gets the values from the label inputs
+   var labels = getLabels(); // <--- TODO: replace this hardcoded list with the result of a function call that gets the values from the label inputs
    var heading = document.getElementById('title').value;  
-
    var subheading = document.getElementById('subtitle').value;   
 
    var hue = '#EA4771';
@@ -102,12 +110,16 @@ function updateChart(event){
     //return false;
 }
 
-    function watchElements(IDs) {
+    function watchElements(elements) {
         var i;
-        for (i = 0; i < IDs.length; i++) {
-            var id = "#" + IDs[i]; //get the string from the list IDs at position i
-            var theElement = $(id); // use jquery to find the element with this id
-            theElement.keyup(updateChart); //attach a keyup event handler that calls updateChart
+        for (i = 0; i < elements.length; i++) {
+            var element = elements[i]; // pick element i out of the array of elements
+            
+            if (element.tagName != 'INPUT') {
+                throw element + " does not look like a valid DOM element";
+            }
+            var jqueryedElement = $(element); // turn this into a jqueryed object so we can watch it with .keyUp below
+            jqueryedElement.keyup(updateChart); //attach a keyup event handler that calls updateChart
         }
     }
 
@@ -132,9 +144,14 @@ $(function () {
     //3. Replace all of the lines below with one line that calls your function 
     //   and passes in the list of all of these IDs
 
-    var myIDs = ["title", "subtitle", "label1", "label2", "label3", "label4", "value1", "value2", "value3"];
+    var titles = document.getElementsByClassName("heading");
+    var labels = document.getElementsByClassName("label-input");
+    var values = document.getElementsByClassName("value-input");
+    //var myIDs = document.getElementById("label-input");
         
-    watchElements(myIDs);    // <--- TODO With Gabe next time: wtch elements by id or class   
+    watchElements(titles);    // <--- TODO With Gabe next time: wtch elements by id or class   
+    watchElements(labels);
+    watchElements(values);
     updateChart();
 
     $('#addAxis').click(addAxis);
